@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    background: lightcyan;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 30vw;
+    box-shadow: 4px;
+    /* border: 1px solid black; */
+    border-radius: 3%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background: white;
+}
+
+.main-container {
+    display: inline-block;
+    width: 55%;
+    height: 100%;
+    position: absolute;
+    /* border: 2px solid black; */
+
+}
+
+.inner-container{
+    display: inline-block;
+    /* border: 1px solid black; */
+    width: 80%;
+    height: 80%;
+    margin: 8% 10%;
+}
+
+.form-heading {
+    font-size: x-large;
+}
+
+.form-heading,
+.email,
+.password,
+.login{
+    margin: 4%;
+}
+
+#e1,
+#p1{
+    border: none;
+    outline: none;
+    margin-left: 5%;
+}
+
+.email,
+.password{
+    border-bottom: 1px solid grey;
+    padding: 2%;
+    margin-top: 9%;
+}
+
+.login{
+    margin-top: 8%;
+}
+
+#l1{
+    margin-top: 8%;
+    padding: 5% 0%;
+    width: 45%;
+    background: #6dabe4;
+    color: white;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    font-size: medium;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.side-container{
+    display: inline-block;
+    height: 100%;
+    width: 40%;
+    margin-left: 55%;
+}
+
+.img-container{
+    display: inline-block;
+    margin-top: 8%;
+    height: 70%;
+    width: 100%;
+    background-image: url('../images/signin-image.jpg');
+    background-repeat: no-repeat;
+}
+
+.not{
+    display: inline-flex;
+    margin-top: 8%;
+    justify-content: space-evenly;
+    height: 25%;
+    width: 100%;
+}
+
+#uplink{
+    font-weight: 900;
+    color: black;
+}

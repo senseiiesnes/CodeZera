@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    background: lightcyan;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 30vw;
+    box-shadow: 4px;
+    /* border: 1px solid black; */
+    border-radius: 3%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background: white;
+}
+
+.main-container {
+    display: inline-block;
+    width: 55%;
+    height: 100%;
+    margin-top: 1.5%;
+    /* border-right: 2px solid black; */
+}
+
+.inner-container{
+    display: inline-block;
+    /* border: 1px solid black; */
+    width: 80%;
+    height: 80%;
+    margin: -3% 10%;
+}
+
+.form-heading {
+    font-size: x-large;
+}
+
+.form-heading,
+.username,
+.email,
+.password,
+.c-password,
+.checkbox,
+.register{
+    margin: 4%;
+}
+
+#u1,
+#e1,
+#p1,
+#p2{
+    border: none;
+    outline: none;
+    margin-left: 5%;
+}
+
+.username,
+.email,
+.password,
+.c-password{
+    border-bottom: 1px solid grey;
+    padding: 2%;
+    margin-top: 7%;
+}
+
+#terms{
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid grey;
+}
+
+.register{
+    margin-top: 8%;
+}
+
+#r1{
+    padding: 5% 0%;
+    width: 45%;
+    background: #6dabe4;
+    color: white;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    font-size: medium;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#c1{
+    margin-left: 5%;
+}
+
+.checkbox{
+    font-family: 'Lora', serif;
+    margin: 8% 0%;
+}
+
+.side-container{
+    display: inline-block;
+    height: 100%;
+    width: 40%;
+}
+
+.img-container{
+    display: inline-block;
+    height: 70%;
+    width: 100%;
+    background-image: url('../images/signup-image.jpg');
+    background-repeat: no-repeat;
+}
+
+.already{
+    display: inline-flex;
+    margin-top: 8%;
+    justify-content: space-evenly;
+    height: 25%;
+    width: 100%;
+}
+
+#inlink{
+    font-weight: 900;
+    color: black;
+}

@@ -1,0 +1,88 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Lora&family=Ubuntu:wght@500&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/css/signup.css" />
+
+<div class="container">
+  <div class="main-container">
+    <div class="inner-container">
+      <div class="form-heading">
+        <h3>Sign Up</h3>
+      </div>
+      <div class="form-container">
+        <form action="/users/create" method="post">
+          <div class="username">
+            <label for="u1"><i class="fa-sharp fa-solid fa-user"></i></label>
+            <input
+              type="text"
+              id="u1"
+              name="name"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div class="email">
+            <label for="e1"
+              ><i class="fa-sharp fa-solid fa-envelope"></i
+            ></label>
+            <input
+              type="email"
+              id="e1"
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div class="password">
+            <label for="p1"><i class="fa-solid fa-lock"></i></label>
+            <input
+              type="password"
+              id="p1"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="c-password">
+            <label for="p2"><i class="fa-solid fa-lock"></i></label>
+            <input
+              type="password"
+              id="p2"
+              name="cpassword"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="c1"
+              name="checkbox"
+              value="checkbox"
+              required
+            />
+            I agree all <a id="terms" href="">Terms of service.</a>
+          </div>
+          <div class="register">
+            <input type="submit" id="r1" value="Register" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="side-container">
+    <div class="img-container"></div>
+    <div class="already">
+      Already a member? <br />
+      <a href="/users/sign-in" id="inlink">Sign In</a>
+    </div>
+  </div>
+</div>
