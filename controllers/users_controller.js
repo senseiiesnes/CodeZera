@@ -1,32 +1,67 @@
 const User = require("../models/user");
 
+// Controller action for user profile
 module.exports.profile = (req, res) => {
-  return res.end("<h1>Users Profile</h1>");
+  if (req.cookies.user_id) {
+    // Find the user by their ID stored in the cookie
+    User.findById(req.cookies.user_id, (err, user) => {
+      if (err) {
+        console.log('error in finding profile.', err);
+        return;
+      }
+      if (user) {
+        return res.render('user_profile', {
+          title: "User Profile",
+          user: user
+        });
+      } else {
+        return res.redirect('/users/sign-in');
+      }
+    });
+  } else {
+    return res.redirect('/users/sign-in');
+  }
 };
 
+// Controller action for user sign-up
 module.exports.signup = (req, res) => {
+  if (req.isAuthenticated()) {
+    // If user is already authenticated, redirect to profile page
+    return res.redirect('/users/profile');
+  }
+
   return res.render("user_sign_up", {
     title: "Codezera | Sign Up",
   });
 };
 
+// Controller action for user sign-in
 module.exports.signin = (req, res) => {
+  if (req.isAuthenticated()) {
+    // If user is already authenticated, redirect to profile page
+    return res.redirect('/users/profile');
+  }
+
   return res.render("user_sign_in", {
     title: "Codezera | Sign In",
   });
 };
 
+// Controller action for creating a new user
 module.exports.create = (req, res) => {
   if (req.body.password != req.body.cpassword) {
+    // If password and confirm password do not match, redirect back to previous page
     return res.redirect("back");
   }
   console.log(req.body);
+  // Check if the user already exists
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
       console.log("error in finding user in signing up!", err);
       return;
     }
     if (!user) {
+      // Create a new user with the provided credentials
       User.create(req.body, (err, user) => {
         if (err) {
           console.log("error in user credentials for signing up!", err);
@@ -36,26 +71,23 @@ module.exports.create = (req, res) => {
         return res.redirect("/users/sign-in");
       });
     } else {
+      // If user with the same email exists, redirect back to previous page
       res.redirect("back");
     }
   });
 };
 
+// Controller action for creating a session (signing in)
 module.exports.createSession = (req, res) => {
-  User.findOne({email:req.body.email}, (err,user)=>{
-    if (err) {
-      console.log("error in signing in!", err);
-      return;
-    }
-    if(user){
-      if(req.body.password!=user.password){
-        return res.redirect('back');
-      }
-      res.cookie('user_id',user.id);
-      return res.redirect('/users/profile');
-    }
-    else{
-      return res.redirect('back');
-    }
+  // Redirect to the homepage after successful sign-in
+  return res.redirect('/');
+};
+
+// Controller action for destroying the session (signing out)
+module.exports.destroySession = (req, res) => {
+  req.logout((err) => {
+    if (err) { return next(err); }
+    // Redirect to the homepage after successful sign-out
+    res.redirect('/');
   });
 };

@@ -1,9 +1,12 @@
+/* CSS for Sign In Page */
+
 body {
     margin: 0;
     font-family: 'Ubuntu', sans-serif;
     background: lightcyan;
 }
 
+/* Styling for the main container */
 .container {
     position: absolute;
     top: 50%;
@@ -18,15 +21,16 @@ body {
     background: white;
 }
 
+/* Styling for the main content container */
 .main-container {
     display: inline-block;
     width: 55%;
     height: 100%;
     position: absolute;
     /* border: 2px solid black; */
-
 }
 
+/* Styling for the inner container */
 .inner-container{
     display: inline-block;
     /* border: 1px solid black; */
@@ -35,10 +39,12 @@ body {
     margin: 8% 10%;
 }
 
+/* Styling for the form heading */
 .form-heading {
     font-size: x-large;
 }
 
+/* Styling for the form elements */
 .form-heading,
 .email,
 .password,
@@ -46,13 +52,7 @@ body {
     margin: 4%;
 }
 
-#e1,
-#p1{
-    border: none;
-    outline: none;
-    margin-left: 5%;
-}
-
+/* Styling for the email and password fields */
 .email,
 .password{
     border-bottom: 1px solid grey;
@@ -60,10 +60,20 @@ body {
     margin-top: 9%;
 }
 
+/* Styling for the login button */
 .login{
     margin-top: 8%;
 }
 
+/* Styling for the email and password input fields */
+#e1,
+#p1{
+    border: none;
+    outline: none;
+    margin-left: 5%;
+}
+
+/* Styling for the login button */
 #l1{
     margin-top: 8%;
     padding: 5% 0%;
@@ -76,6 +86,7 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+/* Styling for the side container */
 .side-container{
     display: inline-block;
     height: 100%;
@@ -83,6 +94,7 @@ body {
     margin-left: 55%;
 }
 
+/* Styling for the image container */
 .img-container{
     display: inline-block;
     margin-top: 8%;
@@ -92,6 +104,7 @@ body {
     background-repeat: no-repeat;
 }
 
+/* Styling for the "Not a member?" section */
 .not{
     display: inline-flex;
     margin-top: 8%;
@@ -100,6 +113,7 @@ body {
     width: 100%;
 }
 
+/* Styling for the "Sign Up" link */
 #uplink{
     font-weight: 900;
     color: black;
