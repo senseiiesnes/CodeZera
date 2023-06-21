@@ -6,20 +6,20 @@ module.exports.profile = (req, res) => {
     // Find the user by their ID stored in the cookie
     User.findById(req.cookies.user_id, (err, user) => {
       if (err) {
-        console.log('error in finding profile.', err);
+        console.log("error in finding profile.", err);
         return;
       }
       if (user) {
-        return res.render('user_profile', {
+        return res.render("user_profile", {
           title: "User Profile",
-          user: user
+          user: user,
         });
       } else {
-        return res.redirect('/users/sign-in');
+        return res.redirect("/users/sign-in");
       }
     });
   } else {
-    return res.redirect('/users/sign-in');
+    return res.redirect("/users/sign-in");
   }
 };
 
@@ -27,7 +27,7 @@ module.exports.profile = (req, res) => {
 module.exports.signup = (req, res) => {
   if (req.isAuthenticated()) {
     // If user is already authenticated, redirect to profile page
-    return res.redirect('/users/profile');
+    return res.redirect("/users/profile");
   }
 
   return res.render("user_sign_up", {
@@ -39,7 +39,7 @@ module.exports.signup = (req, res) => {
 module.exports.signin = (req, res) => {
   if (req.isAuthenticated()) {
     // If user is already authenticated, redirect to profile page
-    return res.redirect('/users/profile');
+    return res.redirect("/users/profile");
   }
 
   return res.render("user_sign_in", {
@@ -80,14 +80,16 @@ module.exports.create = (req, res) => {
 // Controller action for creating a session (signing in)
 module.exports.createSession = (req, res) => {
   // Redirect to the homepage after successful sign-in
-  return res.redirect('/');
+  return res.redirect("/");
 };
 
 // Controller action for destroying the session (signing out)
 module.exports.destroySession = (req, res) => {
   req.logout((err) => {
-    if (err) { return next(err); }
+    if (err) {
+      return next(err);
+    }
     // Redirect to the homepage after successful sign-out
-    res.redirect('/');
+    res.redirect("/");
   });
 };

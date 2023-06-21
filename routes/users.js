@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const passport = require('passport');
+const passport = require("passport");
 
 const usersController = require("../controllers/users_controller");
 
@@ -17,10 +17,11 @@ router.get("/sign-in", usersController.signin);
 router.post("/create", usersController.create);
 
 // Route for creating a session (signing in) using local authentication strategy
-router.post("/createSession", passport.authenticate(
-    'local',
-    { failureRedirect: '/users/sign-in' }
-), usersController.createSession);
+router.post(
+  "/createSession",
+  passport.authenticate("local", { failureRedirect: "/users/sign-in" }),
+  usersController.createSession
+);
 
 // Route for signing out (destroying the session)
 router.get("/sign-out", usersController.destroySession);
