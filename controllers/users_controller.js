@@ -2,24 +2,40 @@ const User = require("../models/user");
 
 // Controller action for user profile
 module.exports.profile = (req, res) => {
-  if (req.cookies.user_id) {
-    // Find the user by their ID stored in the cookie
-    User.findById(req.cookies.user_id, (err, user) => {
-      if (err) {
-        console.log("error in finding profile.", err);
-        return;
-      }
-      if (user) {
-        return res.render("user_profile", {
-          title: "User Profile",
-          user: user,
-        });
-      } else {
-        return res.redirect("/users/sign-in");
-      }
+  // if (req.params.id) {
+  //   // Find the user by their ID stored in the cookie
+  //   User.findById(req.params.id, (err, user) => {
+  //     if (err) {
+  //       console.log("error in finding profile.", err);
+  //       return;
+  //     }
+  //     if (user) {
+  //       return res.render("user_profile", {
+  //         title: "User Profile",
+  //         user: user,
+  //       });
+  //     } else {
+  //       return res.redirect("/users/sign-in");
+  //     }
+  //   });
+  // } else {
+  //   return res.redirect("/users/sign-in");
+  // }
+  User.findById(req.params.id, (err, user) => {
+    return res.render("user_profile", {
+      title: "User Profile",
+      profile_user: user,
+    });
+  });
+};
+
+module.exports.update = (req, res) => {
+  if (req.user.id == req.params.id) {
+    User.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
+      return res.redirect("back");
     });
   } else {
-    return res.redirect("/users/sign-in");
+    return res.status(401).send("Unauthorized!!");
   }
 };
 

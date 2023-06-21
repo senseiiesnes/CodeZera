@@ -5,7 +5,9 @@ const passport = require("passport");
 const usersController = require("../controllers/users_controller");
 
 // Route for accessing the user's profile, requires authentication
-router.get("/profile", passport.checkAuthentication, usersController.profile);
+router.get("/profile/:id", passport.checkAuthentication, usersController.profile);
+
+router.post("/update/:id", passport.checkAuthentication, usersController.update);
 
 // Route for user sign-up
 router.get("/sign-up", usersController.signup);
