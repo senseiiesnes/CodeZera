@@ -95,6 +95,7 @@ module.exports.create = (req, res) => {
 
 // Controller action for creating a session (signing in)
 module.exports.createSession = (req, res) => {
+  req.flash("success", "Logged In Successfully!");
   // Redirect to the homepage after successful sign-in
   return res.redirect("/");
 };
@@ -105,6 +106,7 @@ module.exports.destroySession = (req, res) => {
     if (err) {
       return next(err);
     }
+    req.flash("success", "You have been Logged Out!");
     // Redirect to the homepage after successful sign-out
     res.redirect("/");
   });

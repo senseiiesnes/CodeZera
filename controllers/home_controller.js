@@ -4,6 +4,7 @@ const User = require("../models/user");
 module.exports.home = async (req, res) => {
   try {
     let posts = await Post.find({})
+      
       .populate("user")
       .populate({
         path: "comments",

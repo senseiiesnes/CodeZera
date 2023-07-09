@@ -7,17 +7,18 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "email", // Use "email" field as the username field
+      passReqToCallback: true
     },
-    (email, password, done) => {
+    (req, email, password, done) => {
       // Find the user by email in the database
       User.findOne({ email: email }, (err, user) => {
         if (err) {
-          console.log("Error in finding user --> Passport");
+          req.flash('error',err);
           return done(err);
         }
         if (!user || user.password != password) {
           // If user not found or password doesn't match, authentication fails
-          console.log("Invalid Username/Password");
+          req.flash('error',"Invalid Credentials.");
           return done(null, false);
         }
         // Authentication successful, pass the user object to the next middleware

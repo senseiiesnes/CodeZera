@@ -9,6 +9,8 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 const MongoStore = require("connect-mongo");
+const flash = require("connect-flash");
+const customMware = require("./config/middleware");
 
 // Middleware for parsing URL-encoded bodies
 app.use(express.urlencoded({ extended: false }));
@@ -58,6 +60,9 @@ app.use(passport.session());
 
 // Middleware to set the authenticated user in the request object
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 // Use the routes defined in "./routes" directory
 app.use("/", require("./routes"));
