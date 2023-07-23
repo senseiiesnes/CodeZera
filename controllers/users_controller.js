@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
 
 // Controller action for user profile
 module.exports.profile = (req, res) => {
@@ -29,11 +31,38 @@ module.exports.profile = (req, res) => {
   });
 };
 
-module.exports.update = (req, res) => {
+module.exports.update = async (req, res) => {
+  // if (req.user.id == req.params.id) {
+  //   User.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
+  //     return res.redirect("back");
+  //   });
+  // } else {
+  //   return res.status(401).send("Unauthorized!!");
+  // }
   if (req.user.id == req.params.id) {
-    User.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
+    try {
+      let user = await User.findById(req.params.id);
+      User.uploadedAvatar(req, res, (err) => {
+        if (err) {
+          console.log("----Multer Error----", err);
+        }
+        // console.log(req.file);
+        user.name = req.body.name;
+        user.email = req.body.email;
+
+        if (req.file) {
+          if (user.avatar) {
+            fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+          }
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+        user.save();
+        return res.redirect("back");
+      });
+    } catch (err) {
+      req.flash("error", err);
       return res.redirect("back");
-    });
+    }
   } else {
     return res.status(401).send("Unauthorized!!");
   }

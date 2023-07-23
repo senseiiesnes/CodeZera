@@ -21,6 +21,9 @@ app.use(cookieParser());
 // Middleware to serve static files from the "assets" directory
 app.use(express.static("./assets"));
 
+// Make the uploads path available to the browser
+app.use("/uploads", express.static(__dirname + "/uploads"));
+
 // Middleware for using EJS layouts
 app.use(expresLayouts);
 app.set("layout extractStyles", true);
