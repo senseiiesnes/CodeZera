@@ -5,9 +5,17 @@ const passport = require("passport");
 const usersController = require("../controllers/users_controller");
 
 // Route for accessing the user's profile, requires authentication
-router.get("/profile/:id", passport.checkAuthentication, usersController.profile);
+router.get(
+  "/profile/:id",
+  passport.checkAuthentication,
+  usersController.profile
+);
 
-router.post("/update/:id", passport.checkAuthentication, usersController.update);
+router.post(
+  "/update/:id",
+  passport.checkAuthentication,
+  usersController.update
+);
 
 // Route for user sign-up
 router.get("/sign-up", usersController.signup);
@@ -27,5 +35,16 @@ router.post(
 
 // Route for signing out (destroying the session)
 router.get("/sign-out", usersController.destroySession);
+
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/users/sign-in" }),
+  usersController.createSession
+);
 
 module.exports = router;
